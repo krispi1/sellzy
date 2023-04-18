@@ -18,6 +18,6 @@ export class UpdateProductInput extends PartialType(CreateProductInput) {
   @Field(() => String, { nullable: true })
   unitOfMeasure: string;
 
-  @Field(() => Number, { nullable: true })
+  @Field(() => Int, { nullable: true })
   unitsAvailable: number;
 } // UpdateProductInput

@@ -17,6 +17,6 @@ export class Product {
   @Field(() => String)
   unitOfMeasure: string;
 
-  @Field(() => Number)
+  @Field(() => Int)
   unitsAvailable: number;
 } // Product

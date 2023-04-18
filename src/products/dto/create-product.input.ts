@@ -1,4 +1,4 @@
-import { InputType, Field } from '@nestjs/graphql';
+import { InputType, Field, Int } from '@nestjs/graphql';
 
 @InputType()
 export class CreateProductInput {
@@ -14,6 +14,6 @@ export class CreateProductInput {
   @Field(() => String)
   unitOfMeasure: string;
 
-  @Field(() => Number)
+  @Field(() => Int)
   unitsAvailable: number;
 } // CreateProductInput

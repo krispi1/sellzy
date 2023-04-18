@@ -8,7 +8,9 @@ export class ProductsService {
   constructor(private prisma: PrismaClient) {}
 
   async create(createProductInput: CreateProductInput) {
-    return await this.prisma.product.create({ data: createProductInput });
+    return await this.prisma.product.create({
+      data: createProductInput,
+    });
   }
 
   async findAll() {
@@ -16,7 +18,7 @@ export class ProductsService {
   }
 
   async findOne(id: number) {
-    return await this.prisma.product.findUnique({ where: { id } });
+    return await this.prisma.product.findUnique({ where: { id: id } });
   }
 
   async update(id: number, updateProductInput: UpdateProductInput) {

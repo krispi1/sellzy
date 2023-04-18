@@ -22,7 +22,7 @@ CREATE TABLE "UserLogins" (
 CREATE TABLE "Product" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
-    "price" TEXT NOT NULL,
+    "price" REAL NOT NULL,
     "category" TEXT NOT NULL,
     "unitOfMeasure" TEXT NOT NULL,
     "unitsAvailable" INTEGER NOT NULL,

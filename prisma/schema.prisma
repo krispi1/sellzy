@@ -32,7 +32,7 @@ model UserLogins {
 model Product {
   id             Int      @id @default(autoincrement())
   name           String
-  price          String
+  price          Float
   category       String
   unitOfMeasure  String
   unitsAvailable Int
