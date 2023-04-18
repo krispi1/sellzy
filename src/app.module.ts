@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { join } from 'path';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { join } from 'path';
       playground: true,
     }),
     UsersModule,
+    ProductsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

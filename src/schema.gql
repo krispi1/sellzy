@@ -16,15 +16,29 @@ type User {
   status: String!
 }
 
+type Product {
+  id: Int!
+  name: String!
+  price: Float!
+  category: String!
+  unitOfMeasure: String!
+  unitsAvailable: Float!
+}
+
 type Query {
   users: [User!]!
   user(id: Int!): User!
+  products: [Product!]!
+  product(id: Int!): Product!
 }
 
 type Mutation {
   createUser(createUserInput: CreateUserInput!): User!
   updateUser(id: Int!, updateUserInput: UpdateUserInput!): User!
   removeUser(id: Int!): User!
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(updateProductInput: UpdateProductInput!): Product!
+  removeProduct(id: Int!): Product!
 }
 
 input CreateUserInput {
@@ -39,5 +53,22 @@ input UpdateUserInput {
   lastName: String
   email: String
   phone: String
+  id: Int
+}
+
+input CreateProductInput {
+  name: String!
+  price: Float!
+  category: String!
+  unitOfMeasure: String!
+  unitsAvailable: Float!
+}
+
+input UpdateProductInput {
+  name: String
+  price: Float
+  category: String
+  unitOfMeasure: String
+  unitsAvailable: Float
   id: Int
 }
