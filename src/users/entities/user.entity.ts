@@ -1,8 +1,8 @@
-import { ObjectType, Field } from '@nestjs/graphql';
+import { ObjectType, Field, Int } from '@nestjs/graphql';
 
 @ObjectType()
 export class User {
-  @Field(() => String)
+  @Field(() => Int)
   id: number;
 
   @Field(() => String)
@@ -28,4 +28,4 @@ export class User {
     defaultValue: 'active',
   })
   status: string;
-}
+} // User
