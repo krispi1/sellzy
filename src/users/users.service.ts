@@ -9,6 +9,13 @@ export class UsersService {
   constructor(private prisma: PrismaClient) {}
 
   async create(createUserInput: CreateUserInput) {
+    const users = await this.prisma.user.findMany();
+    if (users.length === 0) {
+      createUserInput = {
+        ...createUserInput,
+        role: 'admin',
+      };
+    }
     return await this.prisma.user.create({ data: createUserInput });
   }
 
@@ -38,4 +45,4 @@ export class UsersService {
       },
     });
   }
-}
+} // UsersService

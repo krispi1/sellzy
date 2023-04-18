@@ -13,4 +13,7 @@ export class CreateUserInput {
 
   @Field(() => String)
   phone: string;
-}
+
+  @Field(() => String, { nullable: true })
+  role: string;
+} // CreateUserInput
