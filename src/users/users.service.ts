@@ -16,19 +16,19 @@ export class UsersService {
         role: 'admin',
       };
     }
-    return await this.prisma.user.create({ data: createUserInput });
+    return this.prisma.user.create({ data: createUserInput });
   }
 
   async findAll() {
-    return await this.prisma.user.findMany();
+    return this.prisma.user.findMany();
   }
 
   async findOne(id: number) {
-    return await this.prisma.user.findUnique({ where: { id } });
+    return this.prisma.user.findUnique({ where: { id } });
   }
 
   async update(id: number, updateUserInput: UpdateUserInput) {
-    return await this.prisma.user.update({
+    return this.prisma.user.update({
       where: {
         id: id,
       },
@@ -39,7 +39,7 @@ export class UsersService {
   }
 
   async remove(id: number) {
-    return await this.prisma.user.delete({
+    return this.prisma.user.delete({
       where: {
         id: id,
       },
