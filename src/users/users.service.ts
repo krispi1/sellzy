@@ -8,6 +8,17 @@ import { UpdateUserInput } from './dto/update-user.input';
 export class UsersService {
   constructor(private prisma: PrismaClient) {}
 
+  // Exclude keys from user
+  exclude<User, Key extends keyof User>(
+    user: User,
+    keys: Key[],
+  ): Omit<User, Key> {
+    for (let key of keys) {
+      delete user[key];
+    }
+    return user;
+  }
+
   async create(createUserInput: CreateUserInput) {
     const users = await this.prisma.user.findMany();
     if (users.length === 0) {
@@ -16,15 +27,22 @@ export class UsersService {
         role: 'admin',
       };
     }
-    return this.prisma.user.create({ data: createUserInput });
+
+    const user = await this.prisma.user.create({
+      data: createUserInput,
+    });
+    return user;
   }
 
   async findAll() {
-    return this.prisma.user.findMany();
+    const users = await this.prisma.user.findMany();
+    const mUsers = users.map((user) => this.exclude(user, ['password']));
+    return mUsers;
   }
 
   async findOne(id: number) {
-    return this.prisma.user.findUnique({ where: { id } });
+    const user = await this.prisma.user.findUnique({ where: { id } });
+    return this.exclude(user, ['password']);
   }
 
   async update(id: number, updateUserInput: UpdateUserInput) {

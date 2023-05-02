@@ -2,40 +2,42 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+    provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+    provider = "sqlite"
+    url      = env("DATABASE_URL")
 }
 
 model User {
-  id         Int          @id @default(autoincrement())
-  firstName  String
-  lastName   String
-  email      String       @unique
-  phone      String
-  role       String       @default("seller")
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
-  userLogins UserLogins[]
+    id         Int          @id @default(autoincrement())
+    firstName  String
+    lastName   String
+    email      String       @unique
+    password   String
+    phone      String
+    role       String       @default("seller")
+    status     String       @default("active")
+    createdAt  DateTime     @default(now())
+    updatedAt  DateTime     @updatedAt
+    userLogins UserLogins[]
 }
 
 model UserLogins {
-  id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
-  lastLogin DateTime
-  userId    Int
+    id        Int      @id @default(autoincrement())
+    user      User     @relation(fields: [userId], references: [id])
+    lastLogin DateTime
+    userId    Int
 }
 
 model Product {
-  id             Int      @id @default(autoincrement())
-  name           String
-  price          Float
-  category       String
-  unitOfMeasure  String
-  unitsAvailable Int
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+    id             Int      @id @default(autoincrement())
+    name           String
+    price          Float
+    category       String
+    unitOfMeasure  String
+    unitsAvailable Int
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
 }
